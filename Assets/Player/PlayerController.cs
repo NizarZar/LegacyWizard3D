@@ -59,13 +59,18 @@ public class PlayerController : MonoBehaviour
     {
         if (fire)
         {
-            Vector3 aim = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             GameObject bulletShot = Instantiate(bullet, transform.position, Quaternion.identity);
-            bulletShot.transform.LookAt(aim);
-            Rigidbody body = bulletShot.GetComponent<Rigidbody>();
-            body.AddRelativeForce(transform.forward*25.2f);
-            fire = false;
+            Vector3 direction;
+            if (Physics.Raycast(ray, out RaycastHit hit, 30f))
+            {
+                direction = hit.point - transform.position;
+                bulletShot.GetComponent<Rigidbody>().AddForce(direction*2.5f,ForceMode.Impulse);
+            }
         }
 
+        fire = false;
     }
+
+    
 }
