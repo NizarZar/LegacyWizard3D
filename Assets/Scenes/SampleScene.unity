@@ -414,6 +414,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1621082194}
   - {fileID: 435270333}
   - {fileID: 1057319700}
   m_Father: {fileID: 0}
@@ -493,6 +494,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: db024a3a-5eba-4a3f-aa09-e51931a83f79
     m_ActionName: Player/TakeDamage[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 321598616}
+        m_TargetAssemblyTypeName: PlayerMagicSystem, Assembly-CSharp
+        m_MethodName: OnCastingSpell
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 88b6a1c8-2ab8-4e06-8e98-a1d62be0007f
+    m_ActionName: Player/Cast Spell[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -511,7 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 408597963}
-  _manaBar: {fileID: 0}
+  _manaBar: {fileID: 455470817}
 --- !u!114 &321598616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,6 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3220ef45a2063b4ea88bbb2699610c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  castPoint: {fileID: 1621082194}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,7 +1054,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 321598613}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &435270334
 BoxCollider:
@@ -1111,7 +1129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 455470814}
   - component: {fileID: 455470816}
-  - component: {fileID: 455470815}
+  - component: {fileID: 455470817}
   m_Layer: 5
   m_Name: Mana_Fill
   m_TagString: Untagged
@@ -1140,18 +1158,6 @@ RectTransform:
   m_AnchoredPosition: {x: -471.5, y: 195.6}
   m_SizeDelta: {x: 135.5414, y: 26.4388}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &455470815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455470813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9650281f52aff42489938f14e3d01e87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &455470816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1203,6 +1209,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &455470817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455470813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9650281f52aff42489938f14e3d01e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &506093428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,7 +1629,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 321598613}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1057319701
 Rigidbody:
@@ -1825,6 +1843,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576136778}
   m_CullTransparentMesh: 1
+--- !u!1 &1621082193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1621082194}
+  m_Layer: 0
+  m_Name: SpellCastPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1621082194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621082193}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.073, y: 0.379, z: 0.601}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 321598613}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2080674305
 GameObject:
   m_ObjectHideFlags: 0

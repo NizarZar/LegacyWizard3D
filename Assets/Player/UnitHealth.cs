@@ -13,22 +13,24 @@ public class UnitHealth
    private float _maxHealth;
    private float _maxMana;
    private float _baseDamage;
-   
-   // properties
 
-   public float CurrentHealth
-   {
-      get {return _currentHealth; }
-      set{_currentHealth = value;} 
-   }
-   // base damage
+   // properties
+// base damage
    public float BaseDamage
    {
       get { return _baseDamage; }
       private set { _baseDamage = value; }
    }
 
+   public float HealthRechargeRate { get; set; } = 1.75f;
+   public float CurrentHealth
+   {
+      get {return _currentHealth; }
+      set{_currentHealth = value;} 
+   }
 
+
+   public float ManaRechargeRate { get; set; } = 2.25f;
    public float CurrentMana
    {
       get { return _currentMana; }
