@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,13 +8,12 @@ public class PlayerController : MonoBehaviour
     
     // CONSTANTS
     public const float MovementSpeed = 5.2f;
-    
+
     // variables
     [SerializeField] private GameObject bullet;
     // camera and movement
-    private Plane plane = new Plane(Vector3.up, 0);
     [SerializeField] private Camera mainCamera;
-    
+
     //inputs
     private bool fire;
     private Vector2 move;
@@ -67,9 +67,11 @@ public class PlayerController : MonoBehaviour
                 direction = hit.point - transform.position;
                 bulletShot.GetComponent<Rigidbody>().AddForce(direction*2.5f,ForceMode.Impulse);
             }
+      
+            fire = false;
         }
 
-        fire = false;
+        
     }
 
     

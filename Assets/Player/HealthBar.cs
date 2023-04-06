@@ -22,6 +22,11 @@ public class HealthBar : MonoBehaviour
         _healthSlider.value = currentHealth;
     }
 
+    public float GetCurrentHealth()
+    {
+        return _healthSlider.value;
+    }
+
 
 
 }

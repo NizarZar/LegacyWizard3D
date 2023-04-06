@@ -24,4 +24,9 @@ public class ManaBar : MonoBehaviour
         _slider.value = maxMana;
         _slider.maxValue = maxMana;
     }
+
+    public float GetCurrentMana()
+    {
+        return _slider.value;
+    }
 }

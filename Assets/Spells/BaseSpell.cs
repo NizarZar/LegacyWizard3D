@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseSpell : MonoBehaviour
+[CreateAssetMenu(fileName = "New Spell", menuName = "Spells")]
+public class BaseSpell : ScriptableObject
 {
 
-    public BaseSpell(string Name)
+    public float ManaCost { get; set; }
+    public float Damage { get; set; }
+    public float HealthCost { get; set; }
+    public float LifeTime { get; set; }
+    public float Velocity { get; set; }
+    public string Name { get; }
+    public BaseSpell(string name)
     {
-        
+        Name = name;
     }
     
     
