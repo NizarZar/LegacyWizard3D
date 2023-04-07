@@ -316,7 +316,8 @@ GameObject:
   - component: {fileID: 321598609}
   - component: {fileID: 321598614}
   - component: {fileID: 321598615}
-  - component: {fileID: 321598616}
+  - component: {fileID: 321598617}
+  - component: {fileID: 321598618}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -336,8 +337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0eebb8e998f434084ad44f5e731971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1057319696}
-  mainCamera: {fileID: 330585545}
 --- !u!136 &321598610
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -464,8 +463,8 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 321598609}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 321598617}
+        m_TargetAssemblyTypeName: WeaponFire, Assembly-CSharp
         m_MethodName: OnFireButton
         m_Mode: 0
         m_Arguments:
@@ -496,7 +495,7 @@ MonoBehaviour:
     m_ActionName: Player/TakeDamage[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 321598616}
+      - m_Target: {fileID: 321598618}
         m_TargetAssemblyTypeName: PlayerMagicSystem, Assembly-CSharp
         m_MethodName: OnCastingSpell
         m_Mode: 0
@@ -529,7 +528,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 408597963}
   _manaBar: {fileID: 455470817}
---- !u!114 &321598616
+--- !u!114 &321598617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321598608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8152c7fb25f02c438c1c2f5da99b928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 330585545}
+  bullet: {fileID: 1057319701}
+--- !u!114 &321598618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -542,6 +555,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castPoint: {fileID: 1621082194}
+  spellToCast: {fileID: 3296151504409727074, guid: 9c1cfc58b868dcc4c9ae426163a5dde3,
+    type: 3}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0

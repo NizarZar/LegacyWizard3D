@@ -30,7 +30,7 @@ public class PlayerMagicSystem : MonoBehaviour
 
         }
 
-        castSpell = false;
+        
 
     }
 

@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
+
 
 [RequireComponent(typeof(SphereCollider))]
 public class Spell : MonoBehaviour
@@ -18,20 +16,23 @@ public class Spell : MonoBehaviour
             transform.Translate(transform.forward * SpellToCast.Velocity * Time.deltaTime);
         }
     }
-
-    private void Awake()
-    {
-        myCollider = GetComponent<SphereCollider>();
-        myCollider.isTrigger = true;
-        myCollider.radius = SpellToCast.SpellRadius;
-        body = GetComponent<Rigidbody>();
-        body.isKinematic = true;
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
         // apply spell effect to whatever we hit
         // apply vfx sfx etc..
         Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        myCollider = GetComponent<SphereCollider>();
+        myCollider.isTrigger = true;
+        myCollider.radius = SpellToCast.SpellRadius;
+        body = GetComponent<Rigidbody>();
+        body.isKinematic = true;
+        
+        Destroy(gameObject,SpellToCast.LifeTime);
     }
 }
