@@ -12,9 +12,17 @@ public class UnitHealth
    private float _currentMana;
    private float _maxHealth;
    private float _maxMana;
-   
-   // properties
+   private float _baseDamage;
 
+   // properties
+// base damage
+   public float BaseDamage
+   {
+      get { return _baseDamage; }
+      private set { _baseDamage = value; }
+   }
+
+   public float HealthRechargeRate { get; set; } = 1.75f;
    public float CurrentHealth
    {
       get {return _currentHealth; }
@@ -22,6 +30,7 @@ public class UnitHealth
    }
 
 
+   public float ManaRechargeRate { get; set; } = 2.25f;
    public float CurrentMana
    {
       get { return _currentMana; }
@@ -41,12 +50,13 @@ public class UnitHealth
    }
    
    // Constructor
-   public UnitHealth(float currentHealth, float currentMana, float maxHealth, float maxMana)
+   public UnitHealth(float currentHealth, float currentMana, float maxHealth, float maxMana, float baseDamage)
    {
       _currentHealth = currentHealth;
       _currentMana = currentMana;
       _maxHealth = maxHealth;
       _maxMana = maxMana;
+      _baseDamage = baseDamage;
    }
 
    public UnitHealth()
@@ -55,15 +65,15 @@ public class UnitHealth
       _currentMana = 100.0f;
       _maxHealth = 100.0f;
       _maxMana = 100.0f;
+      _baseDamage = 10.0f;
    }
 
    // Healing methods
    public void DamageUnit(float damage)
    {
       CurrentHealth -= damage;
-      if (IsDead())
+      if (CurrentHealth - damage <= 0)
       {
-         Debug.Log("Player is already dead!");
          CurrentHealth = 0;
       }
    }
@@ -85,7 +95,7 @@ public class UnitHealth
 
    public bool IsDead()
    {
-      if (CurrentHealth<= 0)
+      if (CurrentHealth == 0)
       {
          return true;
       }
