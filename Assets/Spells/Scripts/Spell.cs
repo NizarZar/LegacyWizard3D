@@ -1,8 +1,10 @@
 using System;
+using System.Security.Cryptography;
 using UnityEngine;
 
 
 [RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(Rigidbody))]
 public class Spell : MonoBehaviour
 {
     private SphereCollider myCollider;
@@ -11,18 +13,16 @@ public class Spell : MonoBehaviour
 
     private void Update()
     {
-        if (SpellToCast.Velocity > 0)
-        {
-            transform.Translate(transform.forward * SpellToCast.Velocity * Time.deltaTime);
-        }
+        transform.Translate(transform.forward * SpellToCast.Velocity * Time.deltaTime);
+        Destroy(gameObject,SpellToCast.LifeTime);
     }
     
-
+    
     private void OnTriggerEnter(Collider other)
     {
         // apply spell effect to whatever we hit
         // apply vfx sfx etc..
-        Destroy(gameObject);
+        
     }
 
     private void Start()
@@ -33,6 +33,5 @@ public class Spell : MonoBehaviour
         body = GetComponent<Rigidbody>();
         body.isKinematic = true;
         
-        Destroy(gameObject,SpellToCast.LifeTime);
     }
 }

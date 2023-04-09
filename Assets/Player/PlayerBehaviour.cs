@@ -27,14 +27,17 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Jump();
         UpdateHealManaBar();
-        
+        if (!GameManager.gameManager.playerStats.CurrentHealth.Equals(GameManager.gameManager.playerStats.MaxHealth))
+        {
+            GameManager.gameManager.playerStats.CurrentHealth+=GameManager.gameManager.playerStats.HealthRechargeRate;
+        }
+
     }
 
-    private void Start()
+    private void Awake()
     {
-        _healthBar.SetMaxHealth(GameManager.gameManager.playerStats.MaxHealth);
-        _manaBar.SetMaxMana(GameManager.gameManager.playerStats.MaxMana);
-        
+        //_healthBar.SetMaxHealth(GameManager.gameManager.playerStats.MaxHealth);
+        //_manaBar.SetMaxMana(GameManager.gameManager.playerStats.MaxMana);
     }
 
     private void PlayerTakeDamage(float damage)

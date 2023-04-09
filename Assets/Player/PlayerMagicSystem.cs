@@ -9,7 +9,7 @@ public class PlayerMagicSystem : MonoBehaviour
     // Start is called before the first frame update
     private bool castSpell;
     [SerializeField] private Transform castPoint;
-    [SerializeField] private Spell spellToCast;
+    [SerializeField] private Spell spell;
     private float currentCastTimer;
 
 
@@ -20,17 +20,14 @@ public class PlayerMagicSystem : MonoBehaviour
 
     public void CastSpell()
     {
-        currentCastTimer += Time.deltaTime;
-        if (castSpell && currentCastTimer >= 0.25f)
+        if (castSpell)
         {
-            currentCastTimer = 0;
-            Debug.Log("Spell casted");
-            Instantiate(spellToCast, castPoint.position, castPoint.rotation);
-
+            Debug.Log("Spell casted is: " + spell.SpellToCast.SpellName ); 
+            Instantiate(spell, castPoint.position,castPoint.rotation);
 
         }
 
-        
+        castSpell = false;
 
     }
 
