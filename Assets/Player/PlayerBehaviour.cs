@@ -15,6 +15,9 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private void Jump()
     {
+        
+        // debugging player take damage -
+        // to remove later
         if (isJumping)
         {
             PlayerTakeDamage(15);
@@ -27,14 +30,15 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Jump();
         UpdateHealManaBar();
-        
+        UpdateHealthAndMana();
+       
+
     }
 
-    private void Start()
+    private void Awake()
     {
-        _healthBar.SetMaxHealth(GameManager.gameManager.playerStats.MaxHealth);
-        _manaBar.SetMaxMana(GameManager.gameManager.playerStats.MaxMana);
-        
+        //_healthBar.SetMaxHealth(GameManager.gameManager.playerStats.MaxHealth);
+        //_manaBar.SetMaxMana(GameManager.gameManager.playerStats.MaxMana);
     }
 
     private void PlayerTakeDamage(float damage)
@@ -64,5 +68,17 @@ public class PlayerBehaviour : MonoBehaviour
         
         
     }
-    
+
+    private void UpdateHealthAndMana()
+    {
+        if (GameManager.gameManager.playerStats.CurrentHealth < GameManager.gameManager.playerStats.MaxHealth)
+        {
+            GameManager.gameManager.playerStats.CurrentHealth += GameManager.gameManager.playerStats.HealthRechargeRate;
+        }
+        else
+        {
+            GameManager.gameManager.playerStats.CurrentHealth = GameManager.gameManager.playerStats.MaxHealth;
+        }
+    }
+
 }
