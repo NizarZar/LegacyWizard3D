@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   manaCost: 5
-  damage: 5
+  damage: 25
   healthCost: 0
   lifeTime: 1.25
   velocity: 8
