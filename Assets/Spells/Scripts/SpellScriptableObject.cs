@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Spell", menuName = "Spells")]
 public class SpellScriptableObject : ScriptableObject
 {
+    
+    // class for spell attributes
 
     [SerializeField] private float manaCost;
     [SerializeField] private float damage;

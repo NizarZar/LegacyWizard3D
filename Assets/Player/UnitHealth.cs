@@ -16,39 +16,7 @@ public class UnitHealth
 
    // properties
 // base damage
-   public float BaseDamage
-   {
-      get { return _baseDamage; }
-      private set { _baseDamage = value; }
-   }
 
-   public float HealthRechargeRate { get; set; } = 1.75f;
-   public float CurrentHealth
-   {
-      get {return _currentHealth; }
-      set{_currentHealth = value;} 
-   }
-
-
-   public float ManaRechargeRate { get; set; } = 2.25f;
-   public float CurrentMana
-   {
-      get { return _currentMana; }
-      set { _currentMana = value; }
-   }
-
-   public float MaxHealth
-   {
-      get { return _maxHealth; }
-      set { _maxHealth = value; }
-   }
-
-   public float MaxMana
-   {
-      get { return _maxMana; }
-      set { _maxMana = value; }
-   }
-   
    // Constructor
    public UnitHealth(float currentHealth, float currentMana, float maxHealth, float maxMana, float baseDamage)
    {
@@ -102,6 +70,38 @@ public class UnitHealth
 
       return false;
 
+   }
+   public float BaseDamage
+   {
+      get { return _baseDamage; }
+      private set { _baseDamage = value; }
+   }
+
+   public float HealthRechargeRate { get; set; } = 1.75f;
+   public float CurrentHealth
+   {
+      get {return _currentHealth; }
+      set{_currentHealth = value;} 
+   }
+
+
+   public float ManaRechargeRate { get; set; } = 2.25f;
+   public float CurrentMana
+   {
+      get { return _currentMana; }
+      set { _currentMana = value; }
+   }
+
+   public float MaxHealth
+   {
+      get { return _maxHealth; }
+      set { _maxHealth = value; }
+   }
+
+   public float MaxMana
+   {
+      get { return _maxMana; }
+      set { _maxMana = value; }
    }
    
    // Mana methods
