@@ -8,6 +8,7 @@ public class WeaponFire : MonoBehaviour
     private bool isFiring;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Rigidbody bullet;
+    [SerializeField] private Transform castPoint;
 
     public void OnFireButton(InputAction.CallbackContext context)
     {
@@ -20,11 +21,11 @@ public class WeaponFire : MonoBehaviour
         if (isFiring)
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            Rigidbody bulletShot = Instantiate(bullet, transform.position, Quaternion.identity);
+            Rigidbody bulletShot = Instantiate(bullet, castPoint.position, Quaternion.identity);
             Vector3 direction;
             if (Physics.Raycast(ray, out RaycastHit hit, 30f))
             {
-                direction = hit.point - transform.position;
+                direction = hit.point - castPoint.position;
                 bulletShot.GetComponent<Rigidbody>().AddForce(direction*2.5f,ForceMode.Impulse);
             }
         }
