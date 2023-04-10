@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 
 public class WeaponFire : MonoBehaviour
 {
@@ -33,11 +31,13 @@ public class WeaponFire : MonoBehaviour
         isFiring = false;
     }
 
+    
+    // not working it needs to be fixed
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Enemy enemy = GetComponent<Enemy>();
+            Enemy enemy = other.GetComponent<Enemy>();
             enemy.UnitHealth.DamageUnit(GameManager.gameManager.playerStats.BaseDamage);
             Debug.Log("Enemy has been hit by a bullet!");
             if (enemy.UnitHealth.IsDead())
@@ -47,4 +47,5 @@ public class WeaponFire : MonoBehaviour
             }
         }
     }
+    
 }
