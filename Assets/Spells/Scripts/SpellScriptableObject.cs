@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Spell", menuName = "Spells")]
@@ -13,6 +15,7 @@ public class SpellScriptableObject : ScriptableObject
     [SerializeField] private float velocity;
     [SerializeField] private float cooldown;
     [SerializeField] private string spellName;
+    [SerializeField] private List<string> elements;
     
     public float ManaCost
     {
@@ -56,6 +59,12 @@ public class SpellScriptableObject : ScriptableObject
         set { spellName = value; }
     }
     public float SpellRadius { get; set; } = .5f;
+
+    public List<String> Elements
+    {
+        get {return elements ;}
+        set { elements = value ;}
+    }
 
     // Magic Elements
 
