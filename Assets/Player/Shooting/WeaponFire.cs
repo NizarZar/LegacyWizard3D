@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,5 +31,20 @@ public class WeaponFire : MonoBehaviour
             }
         }
         isFiring = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Enemy enemy = GetComponent<Enemy>();
+            enemy.UnitHealth.DamageUnit(GameManager.gameManager.playerStats.BaseDamage);
+            Debug.Log("Enemy has been hit by a bullet!");
+            if (enemy.UnitHealth.IsDead())
+            {
+                Debug.Log("Enemy is dead!");
+                Destroy(other.gameObject);
+            }
+        }
     }
 }

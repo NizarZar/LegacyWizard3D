@@ -19,3 +19,7 @@ MonoBehaviour:
   velocity: 8
   cooldown: 2
   spellName: Fireball
+  elements:
+  - Fire
+  - Fire
+  - Fire

@@ -338,7 +338,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 5.2
-  mainCamera: {fileID: 330585545}
 --- !u!136 &321598610
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -544,8 +543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e95f37ad55775e4492be10aab084b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
+  healthBar: {fileID: 408597963}
+  manaBar: {fileID: 455470817}
 --- !u!114 &321598617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,6 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 330585545}
   bullet: {fileID: 1057319701}
+  castPoint: {fileID: 1621082194}
 --- !u!114 &321598618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,7 +573,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castPoint: {fileID: 1621082194}
-  spell: {fileID: 2330556502535473501, guid: fd56704fe108fc64fa594ef3f7245777, type: 3}
+  allSpells:
+  - {fileID: 2330556502535473501, guid: fd56704fe108fc64fa594ef3f7245777, type: 3}
+  selectedElements:
+  - Fire
+  - Fire
+  - Fire
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0

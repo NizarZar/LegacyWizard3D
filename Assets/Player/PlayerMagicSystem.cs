@@ -15,9 +15,9 @@ public class PlayerMagicSystem : MonoBehaviour
     [SerializeField] List<string> selectedElements;
 
     // spell to cast {to change later for dynamic by merging}
-    private Spell spell;
+    private Spell currentSpell;
     private float currentCastTimer;
-
+    private bool spellExist;
 
 // check if cast spell input is triggered
     public void OnCastingSpell(InputAction.CallbackContext context)
@@ -28,11 +28,17 @@ public class PlayerMagicSystem : MonoBehaviour
     // casting the spell by instantiating it!
     public void CastSpell()
     {
-        if (castSpell)
+        if (spellExist)
         {
-            Instantiate(spell, castPoint.position, castPoint.rotation);
+            if (castSpell)
+            {
+                try
+                { Instantiate(currentSpell, castPoint.position, castPoint.rotation); }
+                catch (Exception ex)
+                {ex.GetBaseException(); }
+            }
+            castSpell = false;
         }
-        castSpell = false;
     }
 
     // Update is called once per frame
@@ -42,23 +48,30 @@ public class PlayerMagicSystem : MonoBehaviour
         CheckSpell();
     }
 
-    private void Start()
-    {
-        
-    }
-
     private void CheckSpell()
     {
-        foreach (string element in selectedElements)
+        
+        foreach (Spell spell in allSpells)
         {
-            foreach (Spell sSpell in allSpells)
+            try
             {
-                if (sSpell.SpellToCast.Elements.Contains(element))
+                if (spell.SpellToCast.Elements.Contains(selectedElements[0]) &&
+                    spell.SpellToCast.Elements.Contains(selectedElements[1]) &&
+                    spell.SpellToCast.Elements.Contains(selectedElements[2]))
                 {
-                    spell = sSpell;
+                    currentSpell = spell;
+                    spellExist = true;
                 }
             }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                ex.GetBaseException();
+                spellExist = false;
+                Debug.Log("Spell not found!");
+            }
+            
         }
+        
     }
 }
 
