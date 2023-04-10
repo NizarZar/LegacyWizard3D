@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class WeaponFire : MonoBehaviour
     private bool isFiring;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Rigidbody bullet;
+    [SerializeField] private Transform castPoint;
 
     public void OnFireButton(InputAction.CallbackContext context)
     {
@@ -20,14 +22,29 @@ public class WeaponFire : MonoBehaviour
         if (isFiring)
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            Rigidbody bulletShot = Instantiate(bullet, transform.position, Quaternion.identity);
+            Rigidbody bulletShot = Instantiate(bullet, castPoint.position, Quaternion.identity);
             Vector3 direction;
             if (Physics.Raycast(ray, out RaycastHit hit, 30f))
             {
-                direction = hit.point - transform.position;
+                direction = hit.point - castPoint.position;
                 bulletShot.GetComponent<Rigidbody>().AddForce(direction*2.5f,ForceMode.Impulse);
             }
         }
         isFiring = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Enemy enemy = GetComponent<Enemy>();
+            enemy.UnitHealth.DamageUnit(GameManager.gameManager.playerStats.BaseDamage);
+            Debug.Log("Enemy has been hit by a bullet!");
+            if (enemy.UnitHealth.IsDead())
+            {
+                Debug.Log("Enemy is dead!");
+                Destroy(other.gameObject);
+            }
+        }
     }
 }

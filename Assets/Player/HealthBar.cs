@@ -26,6 +26,7 @@ public class HealthBar : MonoBehaviour
     {
         _healthSlider.maxValue = maxHealth;
     }
+    
 
 
 

@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager { get; private set; }
     // player instantiation
     public UnitHealth playerStats = new UnitHealth(100.0f, 100.0f, 100.0f, 100.0f, 15.0f);
+
+
     // enemies
 
     void Awake()
@@ -20,6 +22,7 @@ public class GameManager : MonoBehaviour
         else
         {
             gameManager = this;
+
         }
         
     }

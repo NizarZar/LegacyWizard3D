@@ -1,5 +1,3 @@
-using System;
-using System.Security.Cryptography;
 using UnityEngine;
 
 
@@ -13,7 +11,7 @@ public class Spell : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector3.forward * SpellToCast.Velocity * Time.deltaTime);
+        transform.Translate(Vector3.forward * (SpellToCast.Velocity * Time.deltaTime));
         Destroy(gameObject,SpellToCast.LifeTime);
     }
     

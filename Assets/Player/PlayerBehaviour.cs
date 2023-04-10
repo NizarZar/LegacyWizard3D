@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,9 +5,8 @@ public class PlayerBehaviour : MonoBehaviour
 {
 
     private bool isJumping;
-    [SerializeField] private HealthBar _healthBar;
-    [SerializeField] private ManaBar _manaBar;
-
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private ManaBar manaBar;
     public void OnJumping(InputAction.CallbackContext context)
     {
         isJumping = context.action.IsPressed();
@@ -35,16 +33,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     }
 
-    private void Awake()
-    {
-        //_healthBar.SetMaxHealth(GameManager.gameManager.playerStats.MaxHealth);
-        //_manaBar.SetMaxMana(GameManager.gameManager.playerStats.MaxMana);
-    }
+
 
     private void PlayerTakeDamage(float damage)
     {
         GameManager.gameManager.playerStats.DamageUnit(damage);
-        _healthBar.SetCurrentHealth(GameManager.gameManager.playerStats.CurrentHealth);
+        healthBar.SetCurrentHealth(GameManager.gameManager.playerStats.CurrentHealth);
         
         
     }
@@ -56,14 +50,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void UpdateHealManaBar()
     {
-        if (!_healthBar.GetCurrentHealth().Equals(GameManager.gameManager.playerStats.CurrentHealth))
+        if (!healthBar.GetCurrentHealth().Equals(GameManager.gameManager.playerStats.CurrentHealth))
         {
-            _healthBar.SetCurrentHealth(GameManager.gameManager.playerStats.CurrentHealth);
+            healthBar.SetCurrentHealth(GameManager.gameManager.playerStats.CurrentHealth);
         }
 
-        if (!_manaBar.GetCurrentMana().Equals(GameManager.gameManager.playerStats.CurrentMana))
+        if (!manaBar.GetCurrentMana().Equals(GameManager.gameManager.playerStats.CurrentMana))
         {
-            _manaBar.SetCurrentMana(GameManager.gameManager.playerStats.CurrentMana);
+            manaBar.SetCurrentMana(GameManager.gameManager.playerStats.CurrentMana);
         }
         
         
