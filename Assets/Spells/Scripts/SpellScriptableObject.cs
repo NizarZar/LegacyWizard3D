@@ -8,14 +8,15 @@ public class SpellScriptableObject : ScriptableObject
     
     // class for spell attributes
 
+    [SerializeField] private string spellName;
     [SerializeField] private float manaCost;
     [SerializeField] private float damage;
     [SerializeField] private float healthCost;
     [SerializeField] private float lifeTime;
     [SerializeField] private float velocity;
     [SerializeField] private float cooldown;
-    [SerializeField] private string spellName;
-    [SerializeField] private List<string> elements;
+    [SerializeField] private List<ElementEnum> elements;
+    private Sprite spriteIcon;
     
     public float ManaCost
     {
@@ -60,7 +61,7 @@ public class SpellScriptableObject : ScriptableObject
     }
     public float SpellRadius { get; set; } = .5f;
 
-    public List<String> Elements
+    public List<ElementEnum> Elements
     {
         get {return elements ;}
         set { elements = value ;}
