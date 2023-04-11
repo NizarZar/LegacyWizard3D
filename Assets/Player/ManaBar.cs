@@ -12,16 +12,12 @@ public class ManaBar : MonoBehaviour
     private void Start()
     {
         _slider = GetComponent<Slider>();
+        _slider.maxValue = GameManager.gameManager.playerStats.MaxMana;
     }
 
     public void SetCurrentMana(float currentMana)
     {
         _slider.value = currentMana;
-    }
-
-    public void SetMaxMana(float maxMana)
-    {
-        _slider.maxValue = maxMana;
     }
 
     public float GetCurrentMana()

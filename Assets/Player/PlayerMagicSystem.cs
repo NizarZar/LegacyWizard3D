@@ -38,19 +38,17 @@ public class PlayerMagicSystem : MonoBehaviour
     {
         waterElementSelected = context.action.IsPressed();
     }
-        
+    
 // check if cast spell input is triggered
     public void OnCastingSpell(InputAction.CallbackContext context)
     {
         castSpell = context.action.IsPressed();
     }
-
     private void CheckSelectedElements()
     {
         WaterElementSelection();
         FireElementSelection();
     }
-
     private void WaterElementSelection()
     {
         if (selectedElements.Count < 3)
@@ -71,26 +69,6 @@ public class PlayerMagicSystem : MonoBehaviour
             waterElementSelected = false;
         }
     }
-    // building spell by checking selected elements and corresponding spell
-    private void SpellBuild()
-    {
-        if (spellBuild)
-        {
-            try
-            {
-                CheckSpell();
-                Debug.Log("Following Spell has been built: " + currentSpell.SpellToCast.SpellName);
-            }
-            catch (NullReferenceException ex)
-            {
-                Debug.Log("Spell not found!");
-                ex.GetBaseException();
-            }
-        }
-
-        spellBuild = false;
-    }
-
     private void FireElementSelection()
     {
         if (selectedElements.Count < 3)
@@ -107,9 +85,7 @@ public class PlayerMagicSystem : MonoBehaviour
             {
                 selectedElements.Dequeue();
                 selectedElements.Enqueue("Fire");
-                
             }
-
             fireElementSelected = false;
         }
     }
@@ -130,6 +106,24 @@ public class PlayerMagicSystem : MonoBehaviour
         }
     }
     
+    // building spell by checking selected elements and corresponding spell
+    private void SpellBuild()
+    {
+        if (spellBuild)
+        {
+            try
+            {
+                CheckSpell();
+                Debug.Log("Following Spell has been built: " + currentSpell.SpellToCast.SpellName);
+            }
+            catch (NullReferenceException ex)
+            {
+                Debug.Log("Spell not found!");
+                ex.GetBaseException();
+            }
+        }
+        spellBuild = false;
+    }
 
     // check which corresponding spell is built with current selected elements
     private void CheckSpell()

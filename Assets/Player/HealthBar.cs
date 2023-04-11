@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour
     private void Start()
     {
         _healthSlider = GetComponent<Slider>();
+        _healthSlider.maxValue = GameManager.gameManager.playerStats.MaxHealth;
     }
     
 
@@ -21,11 +22,7 @@ public class HealthBar : MonoBehaviour
     {
         return _healthSlider.value;
     }
-
-    public void SetMaxHealth(float maxHealth)
-    {
-        _healthSlider.maxValue = maxHealth;
-    }
+    
     
 
 

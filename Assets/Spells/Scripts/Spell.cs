@@ -31,11 +31,8 @@ public class Spell : MonoBehaviour
                 Debug.Log("Enemy is dead!");
                 Destroy(other.gameObject);
             }
-
         }
-        
     }
-
     private void Start()
     {
         myCollider = GetComponent<SphereCollider>();

@@ -526,6 +526,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 80124d41-87a5-428b-95f7-aede550ceb62
     m_ActionName: Player/Aim[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 321598618}
+        m_TargetAssemblyTypeName: PlayerMagicSystem, Assembly-CSharp
+        m_MethodName: OnSelectingFireElement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3c0c0e0d-c2e4-4c23-8ab8-7692c3a5fb15
+    m_ActionName: Player/Elements[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 321598618}
+        m_TargetAssemblyTypeName: PlayerMagicSystem, Assembly-CSharp
+        m_MethodName: OnSpellBuild
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dbb90cd3-cf82-4ff6-9355-1ee1c3802328
+    m_ActionName: Player/SpellBuild[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 321598618}
+        m_TargetAssemblyTypeName: PlayerMagicSystem, Assembly-CSharp
+        m_MethodName: OnSelectingWaterElement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c94d7192-975d-4ec6-b8f4-0ac3d4ee818d
+    m_ActionName: Player/WaterElement[/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -575,10 +623,6 @@ MonoBehaviour:
   castPoint: {fileID: 1621082194}
   allSpells:
   - {fileID: 2330556502535473501, guid: fd56704fe108fc64fa594ef3f7245777, type: 3}
-  selectedElements:
-  - Fire
-  - Fire
-  - Fire
 --- !u!135 &321598619
 SphereCollider:
   m_ObjectHideFlags: 0

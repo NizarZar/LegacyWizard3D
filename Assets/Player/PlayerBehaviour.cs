@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,17 +25,14 @@ public class PlayerBehaviour : MonoBehaviour
             isJumping = false;
         }
     }
+
     void Update()
     {
         Jump();
         UpdateHealManaBar();
-        UpdateHealthAndMana();
-       
+
 
     }
-
-
-
     private void PlayerTakeDamage(float damage)
     {
         GameManager.gameManager.playerStats.DamageUnit(damage);
@@ -61,18 +59,6 @@ public class PlayerBehaviour : MonoBehaviour
         }
         
         
-    }
-
-    private void UpdateHealthAndMana()
-    {
-        if (GameManager.gameManager.playerStats.CurrentHealth < GameManager.gameManager.playerStats.MaxHealth)
-        {
-            GameManager.gameManager.playerStats.CurrentHealth += GameManager.gameManager.playerStats.HealthRechargeRate;
-        }
-        else
-        {
-            GameManager.gameManager.playerStats.CurrentHealth = GameManager.gameManager.playerStats.MaxHealth;
-        }
     }
 
 }
