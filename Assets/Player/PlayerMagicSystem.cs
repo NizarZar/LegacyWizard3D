@@ -18,7 +18,7 @@ public class PlayerMagicSystem : MonoBehaviour
     // cast point
     [SerializeField] private Transform castPoint;
     [SerializeField] private List<Spell> allSpells;
-    private Queue<string> selectedElements = new Queue<string>();
+    private Queue<ElementEnum> selectedElements = new Queue<ElementEnum>();
 
     // spell to cast {to change later for dynamic by merging}
     private Spell currentSpell;
@@ -55,7 +55,7 @@ public class PlayerMagicSystem : MonoBehaviour
         {
             if (waterElementSelected)
             {
-                selectedElements.Enqueue("Water");
+                selectedElements.Enqueue(ElementEnum.WATER);
             }
             waterElementSelected = false;
         }
@@ -64,7 +64,7 @@ public class PlayerMagicSystem : MonoBehaviour
             if (waterElementSelected)
             {
                 selectedElements.Dequeue();
-                selectedElements.Enqueue("Water");
+                selectedElements.Enqueue(ElementEnum.WATER);
             }
             waterElementSelected = false;
         }
@@ -75,7 +75,7 @@ public class PlayerMagicSystem : MonoBehaviour
         {
             if (fireElementSelected)
             {
-                selectedElements.Enqueue("Fire");
+                selectedElements.Enqueue(ElementEnum.FIRE);
             }
             fireElementSelected = false;
         }
@@ -84,7 +84,7 @@ public class PlayerMagicSystem : MonoBehaviour
             if (fireElementSelected)
             {
                 selectedElements.Dequeue();
-                selectedElements.Enqueue("Fire");
+                selectedElements.Enqueue(ElementEnum.FIRE);
             }
             fireElementSelected = false;
         }
@@ -126,21 +126,22 @@ public class PlayerMagicSystem : MonoBehaviour
     }
 
     // check which corresponding spell is built with current selected elements
+    // todo: fix sometimes spell doesnt find it even though combination is correct (problem most likely from queue of selected elements)
     private void CheckSpell()
     {
         foreach (Spell spell in allSpells)
         {
             try
             {
-                if (spell.SpellToCast.Elements.Contains(selectedElements.ToArray()[0]) &&
-                    spell.SpellToCast.Elements.Contains(selectedElements.ToArray()[1]) &&
-                    spell.SpellToCast.Elements.Contains(selectedElements.ToArray()[2]))
+                if (spell.SpellToCast.Elements.ToArray()[0] == selectedElements.ToArray()[0] && 
+                    spell.SpellToCast.Elements.ToArray()[1] == selectedElements.ToArray()[1] && 
+                    spell.SpellToCast.Elements.ToArray()[2] == selectedElements.ToArray()[2])
                 {
                     currentSpell = spell;
                     spellExist = true;
                 }
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (Exception ex)
             {
                 ex.GetBaseException();
                 spellExist = false;
