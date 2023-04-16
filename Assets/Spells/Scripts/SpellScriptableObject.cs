@@ -16,7 +16,7 @@ public class SpellScriptableObject : ScriptableObject
     [SerializeField] private float velocity;
     [SerializeField] private float cooldown;
     [SerializeField] private List<ElementEnum> elements;
-    private Sprite spriteIcon;
+    [SerializeField] Sprite spriteIcon;
     
     public float ManaCost
     {
@@ -65,6 +65,13 @@ public class SpellScriptableObject : ScriptableObject
     {
         get {return elements ;}
         set { elements = value ;}
+    }
+
+    public Sprite SpellIcon
+    {
+        get { return spriteIcon; }
+        set { spriteIcon = value; }
+
     }
 
     // Magic Elements

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMagicSystem : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class PlayerMagicSystem : MonoBehaviour
     private bool fireElementSelected;
     private bool waterElementSelected;
     private bool spellBuild;
-
+    // sprites
+    
     // cast point
     [SerializeField] private Transform castPoint;
     [SerializeField] private List<Spell> allSpells;
+    
     private Queue<ElementEnum> selectedElements = new Queue<ElementEnum>();
 
     // spell to cast {to change later for dynamic by merging}
@@ -65,6 +68,7 @@ public class PlayerMagicSystem : MonoBehaviour
             {
                 selectedElements.Dequeue();
                 selectedElements.Enqueue(ElementEnum.WATER);
+                Debug.Log("New queue: " + selectedElements.ToArray()[0] + selectedElements.ToArray()[1] + selectedElements.ToArray()[2]);
             }
             waterElementSelected = false;
         }
@@ -85,6 +89,7 @@ public class PlayerMagicSystem : MonoBehaviour
             {
                 selectedElements.Dequeue();
                 selectedElements.Enqueue(ElementEnum.FIRE);
+                Debug.Log("New queue: " + selectedElements.ToArray()[0] + selectedElements.ToArray()[1] + selectedElements.ToArray()[2]);
             }
             fireElementSelected = false;
         }
@@ -93,17 +98,20 @@ public class PlayerMagicSystem : MonoBehaviour
     // casting the spell by instantiating it!
     private void CastSpell()
     {
-        if (spellExist)
+        try
         {
             if (castSpell)
             {
-                try
-                { Instantiate(currentSpell, castPoint.position, castPoint.rotation); }
-                catch (Exception ex)
-                {ex.GetBaseException(); }
+                Instantiate(currentSpell, castPoint.position, castPoint.rotation);
+                currentSpell.DebugPrint();;
             }
-            castSpell = false;
         }
+        catch (ArgumentException ex)
+        {
+            Debug.Log("Can't cast non existent spell");
+            ex.GetBaseException();
+        }
+        castSpell = false;
     }
     
     // building spell by checking selected elements and corresponding spell
@@ -114,7 +122,15 @@ public class PlayerMagicSystem : MonoBehaviour
             try
             {
                 CheckSpell();
-                Debug.Log("Following Spell has been built: " + currentSpell.SpellToCast.SpellName);
+                if (spellExist)
+                {
+                    Debug.Log("Following Spell has been built: " + currentSpell.SpellToCast.SpellName);
+                    
+                }
+                else
+                {
+                    Debug.Log("Spell not found!");
+                }
             }
             catch (NullReferenceException ex)
             {
@@ -126,11 +142,11 @@ public class PlayerMagicSystem : MonoBehaviour
     }
 
     // check which corresponding spell is built with current selected elements
-    // todo: fix sometimes spell doesnt find it even though combination is correct (problem most likely from queue of selected elements)
     private void CheckSpell()
     {
         foreach (Spell spell in allSpells)
         {
+            Debug.Log("Current spell: " + spell.SpellToCast.SpellName);
             try
             {
                 if (spell.SpellToCast.Elements.ToArray()[0] == selectedElements.ToArray()[0] && 
@@ -139,11 +155,16 @@ public class PlayerMagicSystem : MonoBehaviour
                 {
                     currentSpell = spell;
                     spellExist = true;
+                    break;
                 }
+
+                currentSpell = null;
+                spellExist = false;
             }
             catch (Exception ex)
             {
                 ex.GetBaseException();
+                currentSpell = null;
                 spellExist = false;
             }
         }

@@ -30,8 +30,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Jump();
         UpdateHealManaBar();
-
-
+        
     }
     private void PlayerTakeDamage(float damage)
     {

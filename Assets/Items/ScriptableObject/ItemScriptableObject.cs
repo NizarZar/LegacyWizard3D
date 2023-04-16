@@ -10,11 +10,11 @@ public class ItemScriptableObject : ScriptableObject
     [SerializeField] private float baseDamage;
     [SerializeField] private string rarity;
     [SerializeField] private float dropRate;
-    [SerializeField] private string type;
+    [SerializeField] private ItemType type;
     private List<string> passiveAttributes;
 
 
-    public string Type
+    public ItemType Type
     {
         get { return type; }
         set { type = value; }

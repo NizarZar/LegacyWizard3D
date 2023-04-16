@@ -5,6 +5,11 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     
-    public ItemScriptableObject itemToUse;
+    private ItemScriptableObject itemToUse;
+
+    public Item(ItemScriptableObject itemScriptableObject)
+    {
+        itemToUse = itemScriptableObject;
+    }
     
 }
