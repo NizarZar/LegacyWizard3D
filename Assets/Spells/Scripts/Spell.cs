@@ -3,19 +3,26 @@ using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Rigidbody))]
-public class Spell : MonoBehaviour
+public abstract class Spell : MonoBehaviour
 {
     private SphereCollider myCollider;
     private Rigidbody body;
-    public SpellScriptableObject SpellToCast;
+    [SerializeField] private SpellScriptableObject spellToCast;
+
+    public SpellScriptableObject SpellToCast
+    {
+        get { return spellToCast; }
+        set { spellToCast = value; }
+    }
 
     private void Update()
     {
         transform.Translate(Vector3.forward * (SpellToCast.Velocity * Time.deltaTime));
         Destroy(gameObject,SpellToCast.LifeTime);
     }
-    
-    
+
+    public abstract void DebugPrint();
+
     // what happens to the spell object when it collides with another
     private void OnTriggerEnter(Collider other)
     {
