@@ -102,8 +102,8 @@ public class PlayerMagicSystem : MonoBehaviour
         {
             if (castSpell)
             {
-                Instantiate(currentSpell, castPoint.position, castPoint.rotation);
-                currentSpell.DebugPrint();;
+                Instantiate(currentSpell, castPoint.position, castPoint.rotation*Quaternion.Euler(0,90,0));
+                currentSpell.DebugPrint();
             }
         }
         catch (ArgumentException ex)
@@ -125,7 +125,6 @@ public class PlayerMagicSystem : MonoBehaviour
                 if (spellExist)
                 {
                     Debug.Log("Following Spell has been built: " + currentSpell.SpellToCast.SpellName);
-                    
                 }
                 else
                 {
@@ -157,7 +156,6 @@ public class PlayerMagicSystem : MonoBehaviour
                     spellExist = true;
                     break;
                 }
-
                 currentSpell = null;
                 spellExist = false;
             }
