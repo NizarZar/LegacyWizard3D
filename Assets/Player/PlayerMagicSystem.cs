@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -15,8 +14,8 @@ public class PlayerMagicSystem : MonoBehaviour
     private bool fireElementSelected;
     private bool waterElementSelected;
     private bool spellBuild;
-    // sprites
-    
+    // Spell Icons Sprites
+    [SerializeField] private Image firstSpellIcon;
     // cast point
     [SerializeField] private Transform castPoint;
     [SerializeField] private List<Spell> allSpells;
@@ -125,15 +124,19 @@ public class PlayerMagicSystem : MonoBehaviour
                 if (spellExist)
                 {
                     Debug.Log("Following Spell has been built: " + currentSpell.SpellToCast.SpellName);
+                    firstSpellIcon.sprite = currentSpell.SpellToCast.SpellIcon;
+                    firstSpellIcon.enabled = true;
                 }
                 else
                 {
+                    firstSpellIcon.enabled = false;
                     Debug.Log("Spell not found!");
                 }
             }
             catch (NullReferenceException ex)
             {
                 Debug.Log("Spell not found!");
+                firstSpellIcon.enabled = false;
                 ex.GetBaseException();
             }
         }
@@ -145,7 +148,6 @@ public class PlayerMagicSystem : MonoBehaviour
     {
         foreach (Spell spell in allSpells)
         {
-            Debug.Log("Current spell: " + spell.SpellToCast.SpellName);
             try
             {
                 if (spell.SpellToCast.Elements.ToArray()[0] == selectedElements.ToArray()[0] && 
@@ -173,6 +175,11 @@ public class PlayerMagicSystem : MonoBehaviour
         CheckSelectedElements();
         CastSpell();
         SpellBuild();
+    }
+
+    private void Start()
+    {
+        firstSpellIcon.enabled = false;
     }
 }
 
