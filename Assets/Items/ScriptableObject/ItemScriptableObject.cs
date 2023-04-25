@@ -13,7 +13,6 @@ public class ItemScriptableObject : ScriptableObject
     [SerializeField] private ItemType type;
     private List<string> passiveAttributes;
 
-
     public ItemType Type
     {
         get { return type; }

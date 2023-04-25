@@ -12,7 +12,7 @@ public abstract class Spell : MonoBehaviour
     public SpellScriptableObject SpellToCast
     {
         get { return spellToCast; }
-        set { spellToCast = value; }
+        private set { spellToCast = value; }
     }
 
     private void Update()

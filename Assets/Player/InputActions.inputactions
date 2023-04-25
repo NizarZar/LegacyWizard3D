@@ -69,6 +69,51 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "EarthElement",
+                    "type": "Button",
+                    "id": "9a404670-e861-4ec1-be13-9c5b1406e7d2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WindElement",
+                    "type": "Button",
+                    "id": "75abb266-7ca8-4caf-8077-66070c901551",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LightningElement",
+                    "type": "Button",
+                    "id": "e6376a06-8f1f-4a85-a6c6-869012fa2f64",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "VoidElement",
+                    "type": "Button",
+                    "id": "69b8efc5-94e1-41f8-a8cb-938711deee16",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "VenomElement",
+                    "type": "Button",
+                    "id": "7bb7a7b2-c56e-4c5f-8457-551ac55d4be8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "SpellBuild",
                     "type": "Value",
                     "id": "dbb90cd3-cf82-4ff6-9355-1ee1c3802328",
@@ -228,6 +273,61 @@
                     "processors": "",
                     "groups": "",
                     "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e1611b9-8597-4f02-a051-45e043d5d5d1",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EarthElement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0539f8f6-e67a-4587-960c-c52255f34e84",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WindElement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9e36c8e3-fd73-4057-a49d-b2579f6f996f",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LightningElement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "378cc2bb-93cf-4309-bb88-f26f42d72b6e",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VoidElement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "72910942-26dd-4a59-a083-c17f0dff4ea5",
+                    "path": "<Keyboard>/7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VenomElement",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
