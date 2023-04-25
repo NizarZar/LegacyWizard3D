@@ -9,19 +9,28 @@ public class PlayerMagicSystem : MonoBehaviour
 
     // Start is called before the first frame update
     // inputs
+    // cast spell boolean
     private bool castSpell;
     private bool spellExist;
+    // elements selected
     private bool fireElementSelected;
     private bool waterElementSelected;
+    private bool earthElementSelected;
+    private bool windElementSelected;
+    private bool lightningElementSelected;
+    private bool voidElementSelected;
+    private bool venomElementSelected;
+    // spell build boolean
     private bool spellBuild;
     // Spell Icons Sprites
     [SerializeField] private Image firstSpellIcon;
+    //[SerializeField] private Image secondSpellIcon;
     // cast point
     [SerializeField] private Transform castPoint;
+    // all spells
     [SerializeField] private List<Spell> allSpells;
-    
+    // selected elements by the player
     private Queue<ElementEnum> selectedElements = new Queue<ElementEnum>();
-
     // spell to cast {to change later for dynamic by merging}
     private Spell currentSpell;
 
@@ -31,25 +40,41 @@ public class PlayerMagicSystem : MonoBehaviour
     {
         spellBuild = context.action.IsPressed();
     }
+    
+    // selecting elements
     public void OnSelectingFireElement(InputAction.CallbackContext context)
     {
         fireElementSelected = context.action.IsPressed();
     }
-
     public void OnSelectingWaterElement(InputAction.CallbackContext context)
     {
         waterElementSelected = context.action.IsPressed();
+    }
+    public void OnSelectingEarthElement(InputAction.CallbackContext context)
+    {
+        earthElementSelected = context.action.IsPressed();
+    }
+    public void OnSelectingWindElement(InputAction.CallbackContext context)
+    {
+        windElementSelected = context.action.IsPressed();
+    }
+    public void OnSelectingLightningElement(InputAction.CallbackContext context)
+    {
+        lightningElementSelected = context.action.IsPressed();
+    }
+    public void OnSelectingVoidElement(InputAction.CallbackContext context)
+    {
+        voidElementSelected = context.action.IsPressed();
+    }
+    public void OnSelectingVenomElement(InputAction.CallbackContext context)
+    {
+        venomElementSelected = context.action.IsPressed();
     }
     
 // check if cast spell input is triggered
     public void OnCastingSpell(InputAction.CallbackContext context)
     {
         castSpell = context.action.IsPressed();
-    }
-    private void CheckSelectedElements()
-    {
-        WaterElementSelection();
-        FireElementSelection();
     }
     private void WaterElementSelection()
     {
@@ -94,6 +119,135 @@ public class PlayerMagicSystem : MonoBehaviour
         }
     }
 
+    private void EarthElementSelection()
+    {
+        if (selectedElements.Count < 3)
+        {
+            if (earthElementSelected)
+            {
+                selectedElements.Enqueue(ElementEnum.EARTH);
+            }
+
+            earthElementSelected = false;
+        }
+        else
+        {
+            if (earthElementSelected)
+            {
+                selectedElements.Dequeue();
+                selectedElements.Enqueue(ElementEnum.EARTH);
+                Debug.Log("New queue: " + selectedElements.ToArray()[0] + selectedElements.ToArray()[1] + selectedElements.ToArray()[2]);
+            }
+
+            earthElementSelected = false;
+        }
+    }
+
+    private void WindElementSelection()
+    {
+        if (selectedElements.Count < 3)
+        {
+            if (windElementSelected)
+            {
+                selectedElements.Enqueue(ElementEnum.WIND);
+            }
+
+            windElementSelected = false;
+        }
+        else
+        {
+            if (windElementSelected)
+            {
+                selectedElements.Dequeue();
+                selectedElements.Enqueue(ElementEnum.WIND);
+                Debug.Log("New queue: " + selectedElements.ToArray()[0] + selectedElements.ToArray()[1] + selectedElements.ToArray()[2]);
+            }
+
+            windElementSelected = false;
+        }
+    }
+
+    private void LightningElementSelection()
+    {
+        if (selectedElements.Count < 3)
+        {
+            if (lightningElementSelected)
+            {
+                selectedElements.Enqueue(ElementEnum.LIGHTNING);
+            }
+
+            lightningElementSelected = false;
+        }
+        else
+        {
+            if (lightningElementSelected)
+            {
+                selectedElements.Dequeue();
+                selectedElements.Enqueue(ElementEnum.LIGHTNING);
+                Debug.Log("New queue: " + selectedElements.ToArray()[0] + selectedElements.ToArray()[1] + selectedElements.ToArray()[2]);
+            }
+
+            lightningElementSelected = false;
+        }
+    }
+
+    private void VoidElementSelection()
+    {
+        if (selectedElements.Count < 3)
+        {
+            if (voidElementSelected)
+            {
+                selectedElements.Enqueue(ElementEnum.VOID);
+            }
+
+            voidElementSelected = false;
+        }
+        else
+        {
+            if (voidElementSelected)
+            {
+                selectedElements.Dequeue();
+                selectedElements.Enqueue(ElementEnum.VOID);
+                Debug.Log("New queue: " + selectedElements.ToArray()[0] + selectedElements.ToArray()[1] + selectedElements.ToArray()[2]);
+            }
+
+            voidElementSelected = false;
+        }
+    }
+
+    private void VenomElementSelection()
+    {
+        if (selectedElements.Count < 3)
+        {
+            if (venomElementSelected)
+            {
+                selectedElements.Enqueue(ElementEnum.VENOM);
+            }
+
+            venomElementSelected = false;
+        }
+        else
+        {
+            if (venomElementSelected)
+            {
+                selectedElements.Dequeue();
+                selectedElements.Enqueue(ElementEnum.VENOM);
+                Debug.Log("New queue: " + selectedElements.ToArray()[0] + selectedElements.ToArray()[1] + selectedElements.ToArray()[2]);
+            }
+
+            venomElementSelected = false;
+        }
+    }
+    private void CheckSelectedElements()
+    {
+        WaterElementSelection();
+        FireElementSelection();
+        EarthElementSelection();
+        WindElementSelection();
+        LightningElementSelection();
+        VoidElementSelection();
+        VenomElementSelection();
+    }
     // casting the spell by instantiating it!
     private void CastSpell()
     {
@@ -180,6 +334,7 @@ public class PlayerMagicSystem : MonoBehaviour
     private void Start()
     {
         firstSpellIcon.enabled = false;
+        //secondSpellIcon.enabled = false;
     }
 }
 

@@ -578,6 +578,86 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5d2917bc-8fe3-458b-92f1-908b5164e490
     m_ActionName: Player/Inventory[/Keyboard/i]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 321598618}
+        m_TargetAssemblyTypeName: PlayerMagicSystem, Assembly-CSharp
+        m_MethodName: OnSelectingEarthElement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9a404670-e861-4ec1-be13-9c5b1406e7d2
+    m_ActionName: Player/EarthElement[/Keyboard/3]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 321598618}
+        m_TargetAssemblyTypeName: PlayerMagicSystem, Assembly-CSharp
+        m_MethodName: OnSelectingWindElement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 75abb266-7ca8-4caf-8077-66070c901551
+    m_ActionName: Player/WindElement[/Keyboard/4]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 321598618}
+        m_TargetAssemblyTypeName: PlayerMagicSystem, Assembly-CSharp
+        m_MethodName: OnSelectingLightningElement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e6376a06-8f1f-4a85-a6c6-869012fa2f64
+    m_ActionName: Player/LightningElement[/Keyboard/5]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 321598618}
+        m_TargetAssemblyTypeName: PlayerMagicSystem, Assembly-CSharp
+        m_MethodName: OnSelectingVoidElement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 69b8efc5-94e1-41f8-a8cb-938711deee16
+    m_ActionName: Player/VoidElement[/Keyboard/6]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 321598618}
+        m_TargetAssemblyTypeName: PlayerMagicSystem, Assembly-CSharp
+        m_MethodName: OnSelectingVenomElement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7bb7a7b2-c56e-4c5f-8457-551ac55d4be8
+    m_ActionName: Player/VenomElement[/Keyboard/7]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -624,6 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3220ef45a2063b4ea88bbb2699610c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstSpellIcon: {fileID: 355993364}
   castPoint: {fileID: 1621082194}
   allSpells:
   - {fileID: 2755764335504597458, guid: fd56704fe108fc64fa594ef3f7245777, type: 3}
@@ -770,7 +851,6 @@ GameObject:
   - component: {fileID: 355993363}
   - component: {fileID: 355993365}
   - component: {fileID: 355993364}
-  - component: {fileID: 355993366}
   m_Layer: 5
   m_Name: Spell Icon
   m_TagString: Untagged
@@ -836,19 +916,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355993362}
   m_CullTransparentMesh: 1
---- !u!114 &355993366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355993362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0acbddedf81c32f449979c6cda26f1f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellIcon: {fileID: 0}
 --- !u!1 &362690252
 GameObject:
   m_ObjectHideFlags: 0
@@ -2076,7 +2143,6 @@ GameObject:
   - component: {fileID: 2106503202}
   - component: {fileID: 2106503201}
   - component: {fileID: 2106503200}
-  - component: {fileID: 2106503199}
   m_Layer: 5
   m_Name: SpellsBar
   m_TagString: Untagged
@@ -2084,19 +2150,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2106503199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2106503198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0acbddedf81c32f449979c6cda26f1f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellIcon: {fileID: 0}
 --- !u!114 &2106503200
 MonoBehaviour:
   m_ObjectHideFlags: 0

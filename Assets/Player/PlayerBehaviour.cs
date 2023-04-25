@@ -14,7 +14,6 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private void Jump()
     {
-        
         // debugging player take damage -
         // to remove later
         if (isJumping)
@@ -30,14 +29,11 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Jump();
         UpdateHealManaBar();
-        
     }
     private void PlayerTakeDamage(float damage)
     {
         GameManager.gameManager.playerStats.DamageUnit(damage);
         healthBar.SetCurrentHealth(GameManager.gameManager.playerStats.CurrentHealth);
-        
-        
     }
 
     private void PlayerHeal(float healAmount)
