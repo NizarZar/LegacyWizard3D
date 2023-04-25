@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class PlayerMagicSystem : MonoBehaviour
 {
 
-    // Start is called before the first frame update
+    // Elements Object visualisation
+    [SerializeField] private GameObject fireElementVisual;
+    [SerializeField] private GameObject waterElementVisual;
     // inputs
     // cast spell boolean
     private bool castSpell;
@@ -104,6 +106,7 @@ public class PlayerMagicSystem : MonoBehaviour
             if (fireElementSelected)
             {
                 selectedElements.Enqueue(ElementEnum.FIRE);
+
             }
             fireElementSelected = false;
         }
@@ -323,17 +326,44 @@ public class PlayerMagicSystem : MonoBehaviour
             }
         }
     }
+
+    private void ElementsVisualRotation()
+    {
+        if (selectedElements.Contains(ElementEnum.FIRE))
+        {
+            fireElementVisual.SetActive(true);
+            fireElementVisual.transform.RotateAround(transform.position, new Vector3(0,1,0), 150*Time.deltaTime);
+        }
+        else
+        {
+            fireElementVisual.SetActive(false);
+        }
+
+        if (selectedElements.Contains(ElementEnum.WATER))
+        {
+            waterElementVisual.SetActive(true);
+            waterElementVisual.transform.RotateAround(transform.position, new Vector3(0,1,0), 150*Time.deltaTime);
+        }
+        else
+        {
+            waterElementVisual.SetActive(false);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
         CheckSelectedElements();
         CastSpell();
         SpellBuild();
+        ElementsVisualRotation();
+        
     }
 
     private void Start()
     {
         firstSpellIcon.enabled = false;
+        fireElementVisual.SetActive(false);
+        waterElementVisual.SetActive(false);
         //secondSpellIcon.enabled = false;
     }
 }
