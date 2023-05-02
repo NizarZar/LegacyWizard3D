@@ -106,7 +106,6 @@ public class PlayerMagicSystem : MonoBehaviour
             if (fireElementSelected)
             {
                 selectedElements.Enqueue(ElementEnum.FIRE);
-
             }
             fireElementSelected = false;
         }
@@ -257,9 +256,11 @@ public class PlayerMagicSystem : MonoBehaviour
         try
         {
             if (castSpell)
-            {
-                Instantiate(currentSpell, castPoint.position, castPoint.rotation*Quaternion.Euler(0,90,0));
+            { 
+                Instantiate(currentSpell, castPoint.position, castPoint.rotation * Quaternion.Euler(0, 90, 0));
+                //GameManager.gameManager.playerStats.CurrentMana -= currentSpell.SpellToCast.ManaCost;
                 currentSpell.DebugPrint();
+                
             }
         }
         catch (ArgumentException ex)

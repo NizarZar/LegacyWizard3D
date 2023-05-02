@@ -5,18 +5,25 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "Items")]
 public class ItemScriptableObject : ScriptableObject
 {
+    [SerializeField] private string id;
     [SerializeField] private string itemName;
     [SerializeField] private ElementEnum baseElement;
     [SerializeField] private float baseDamage;
     [SerializeField] private string rarity;
     [SerializeField] private float dropRate;
     [SerializeField] private ItemType type;
+    [SerializeField] private Sprite icon;
     private List<string> passiveAttributes;
 
     public ItemType Type
     {
         get { return type; }
         set { type = value; }
+    }
+    public Sprite Icon
+    {
+        get { return icon; }
+        set { icon = value; }
     }
     public string ItemName
     {
@@ -46,6 +53,12 @@ public class ItemScriptableObject : ScriptableObject
     {
         get { return dropRate; }
         set { dropRate = value; }
+    }
+
+    public string ID
+    {
+        get { return id; }
+        set { id = value; }
     }
 
 }

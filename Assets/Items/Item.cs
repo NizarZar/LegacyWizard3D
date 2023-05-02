@@ -1,15 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+
 
 public class Item : MonoBehaviour
 {
     
-    private ItemScriptableObject itemToUse;
+    [SerializeField] private ItemScriptableObject itemToUse;
+    private int stackSize;
 
-    public Item(ItemScriptableObject itemScriptableObject)
+    public ItemScriptableObject ItemToUse
     {
-        itemToUse = itemScriptableObject;
+        get { return itemToUse; }
+        private set { itemToUse = value; }
     }
+
+    private void Update()
+    {
+        throw new NotImplementedException();
+    }
+
+    public int StackSize
+    {
+        get { return stackSize; }
+        set { stackSize = value; }
+    }
+    
     
 }
