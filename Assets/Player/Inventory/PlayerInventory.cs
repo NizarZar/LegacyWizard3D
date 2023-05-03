@@ -6,35 +6,46 @@ using UnityEngine.InputSystem;
 
 public class PlayerInventory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private Dictionary<ItemScriptableObject, Item> itemsDictionary;
-    [SerializeField] private List<Item> inventoryItems;
+
     private bool isInventoryOpen;
+    public static PlayerInventory inventoryManager;
+    [SerializeField] private List<Item> itemsList = new List<Item>();
 
     public void OnInventoryOpen(InputAction.CallbackContext context)
     {
         isInventoryOpen = context.action.IsPressed();
     }
 
+    // TODO: FIX THE INVENTORY NOT ALWAYS OPENING AND CLOSING
+    // SOMETIMES IT BLINKS!
     private void OpenInventory()
     {
         if (isInventoryOpen)
         {
-            
         }
     }
-
-
-
     // Update is called once per frame
     void Update()
     {
         OpenInventory();
     }
-
     private void Awake()
     {
-        inventoryItems = new List<Item>();
-        itemsDictionary = new Dictionary<ItemScriptableObject, Item>();
+        inventoryManager = this;
+    }
+    public List<Item> ItemsList
+    {
+        get => itemsList;
+        set => itemsList = value;
+    }
+
+    public void AddItem(Item item)
+    {
+        itemsList.Add(item);
+    }
+
+    public void RemoveItem(Item item)
+    {
+        itemsList.Remove(item);
     }
 }

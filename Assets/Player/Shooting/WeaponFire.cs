@@ -32,7 +32,7 @@ public class WeaponFire : MonoBehaviour
     }
 
     
-    // not working it needs to be fixed
+    // TODO: not working it needs to be fixed
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
